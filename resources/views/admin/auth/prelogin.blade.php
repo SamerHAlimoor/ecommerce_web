@@ -24,7 +24,7 @@
 
                 <div class="card-content">
                     <div class="card-body">
-                        <form class="form-horizontal form-simple" action="{{ route('admin.login') }}" method="post" novalidate>
+                        <form class="form-horizontal form-simple" action="{{ route('admin.loginDashboard') }}" method="post" novalidate>
                             @csrf
                             <fieldset class="form-group position-relative has-icon-left mb-0">
                                 <input type="text" name="email" class="form-control form-control-lg input-lg" value="" id="email" placeholder="أدخل البريد الالكتروني ">

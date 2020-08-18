@@ -13,11 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 // routes/web.php
-
+/*
 Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 {
     /** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
-    Route::get('/', function()
+  /*  Route::get('/', function()
     {
         return View::make('hello');
     });
@@ -26,3 +26,10 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
         return View::make('test');
     });
 });
+  */
+Route::group(['namespace'=>'Site'], function(){
+    Route::get('/login',function (){
+        return "This is Not  site , please Login ";
+    })->name("login");
+});
+

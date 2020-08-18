@@ -6,7 +6,7 @@
                     class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i
                     class="ft-menu font-large-1"></i></a></li>
                 <li class="nav-item">
-                    <a class="navbar-brand" href="{{ route('admin.dashboard')}}">
+                    <a class="navbar-brand" href="">
                         <img class="brand-logo" alt="modern admin logo"
                              src="{{asset('assets/admin/images/logo/logo.png')}}">
                         <h3 class="brand-text">Modern Admin</h3>
@@ -31,7 +31,7 @@
                         <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
                 <span class="mr-1">مرحبا
                   <span
-                      class="user-name text-bold-700">  {{ Auth::user()->name}} </span>
+                      class="user-name text-bold-700">   </span>
                 </span>
                             <span class="avatar avatar-online">
                   <img  style="height: 35px;" src="" alt="avatar"><i></i></span>

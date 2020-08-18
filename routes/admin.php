@@ -14,8 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 // routes/web.php
 
-Route::group(['prefix' => LaravelLocalization::setLocale()], function()
+Route::group(['namespace'=>'Dashborad','middleware'=>'auth:admin','prefix' => LaravelLocalization::setLocale()], function()
 {
+    /*
 //    /** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
 //    Route::get('/', function()
 //    {
@@ -25,8 +26,21 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 //    Route::get('test',function(){
 //        return View::make('test');
    // });
-    Route::get('/', function () {
+  /*  Route::get('/', function () {
         return view('welcome');
-    });
+    });*/
+    Route::get('/','DashboradController@index' )->name('admin.dashboard');
+
+
+
+
+
 });
+
+Route::group(['namespace'=>'Dashborad','middleware'=>'guest:admin'], function(){
+    Route::get('/login','LoginController@login')->name("admin.login");
+    Route::post('/login','LoginController@loginDashboard')->name("admin.loginDashboard");
+
+});
+
 
