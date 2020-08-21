@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/*
-Route::get('/admin', function () {
-    return view('layouts.admin');
-})->name('admin.dashboard');
+
+Route::get('/', function () {
+    return "Main Page";
+});
