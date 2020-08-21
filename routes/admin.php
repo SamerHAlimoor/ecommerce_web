@@ -30,7 +30,9 @@ Route::group(['namespace'=>'Dashborad','middleware'=>'auth:admin','prefix' => La
         return view('welcome');
     });*/
     Route::get('/','DashboradController@index' )->name('admin.dashboard');
-
+Route::group(['prefix'=> 'Setting'],function (){
+    Route::get('/edit-ShippingMethod/{type}','SettingController@editShippingMethods' )->name('edit.shipping.methods');
+});
 
 
 
