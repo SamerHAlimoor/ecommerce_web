@@ -80,7 +80,7 @@
 
 			target[fragments[fragments.length - 1]] = modules[id];
 		}
-		
+
 		// Expose private modules for unit tests
 		if (exports.AMDLC_TESTS) {
 			privateModules = exports.privateModules || {};
@@ -1313,7 +1313,7 @@ define("tinymce/tableplugin/Quirks", [
 		}
 
 		// Fixes an issue on Gecko where it's impossible to place the caret behind a table
-		// This fix will force a paragraph element after the table but only when the forced_root_block setting is enabled
+		// This fix will force a paragraph element after the table but only when the forced_root_block settings is enabled
 		function fixTableCaretPos() {
 			editor.on('KeyDown SetContent VisualAid', function() {
 				var last;

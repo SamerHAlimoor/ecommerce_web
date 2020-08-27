@@ -13,36 +13,32 @@ use Illuminate\Support\Facades\Route;
 |
 */
 // routes/web.php
+Route::group(
+    [
+        'prefix' => LaravelLocalization::setLocale(),
+        'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
+    ], function(){
+    Route::group(['namespace'=>'Dashborad','middleware'=>'auth:admin','prefix'=>'admin'], function()
+    {
 
-Route::group(['namespace'=>'Dashborad','middleware'=>'auth:admin','prefix' => LaravelLocalization::setLocale()], function()
-{
-    /*
-//    /** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
-//    Route::get('/', function()
-//    {
-//        return View::make('hello');
-//    });
-//
-//    Route::get('test',function(){
-//        return View::make('test');
-   // });
-  /*  Route::get('/', function () {
-        return view('welcome');
-    });*/
-    Route::get('/','DashboradController@index' )->name('admin.dashboard');
-Route::group(['prefix'=> 'Setting'],function (){
-    Route::get('/edit-ShippingMethod/{type}','SettingController@editShippingMethods' )->name('edit.shipping.methods');
+        Route::get('/','DashboradController@index' )->name('admin.dashboard');
+        Route::group(['prefix'=> 'settings'],function (){
+            Route::get('/shippings-method/{type}','SettingController@editShippingMethods' )->name('edit.shippings.methods');
+            Route::put('/shippings-method/{id}','SettingController@updateShippingMethods' )->name('update.shippings.methods');
+
+        });
+
+
+
+
+    });
+
+    Route::group(['namespace'=>'Dashborad','middleware'=>'guest:admin','prefix'=>'admin'], function(){
+        Route::get('/login','LoginController@login')->name("admin.login");
+        Route::post('/login','LoginController@loginDashboard')->name("admin.loginDashboard");
+
+    });
 });
 
-
-
-
-});
-
-Route::group(['namespace'=>'Dashborad','middleware'=>'guest:admin'], function(){
-    Route::get('/login','LoginController@login')->name("admin.login");
-    Route::post('/login','LoginController@loginDashboard')->name("admin.loginDashboard");
-
-});
 
 

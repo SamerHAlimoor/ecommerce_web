@@ -1686,7 +1686,7 @@ sh.Highlighter.prototype = {
      * Initializes the highlighter/brush.
      *
      * Constructor isn't used for initialization so that nothing executes during necessary
-     * `new SyntaxHighlighter.Highlighter()` call when setting up brush inheritence.
+     * `new SyntaxHighlighter.Highlighter()` call when settings up brush inheritence.
      *
      * @param {Hash} params Highlighter parameters.
      */
@@ -1768,7 +1768,7 @@ typeof(exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter :
                 'this throw true try typeof var while with yield';
 
         var r = SyntaxHighlighter.regexLib;
-        
+
         this.regexList = [
             { regex: r.multiLineDoubleQuotedString,                 css: 'string' },            // double quoted strings
             { regex: r.multiLineSingleQuotedString,                 css: 'string' },            // single quoted strings
@@ -1777,7 +1777,7 @@ typeof(exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter :
             { regex: /\s*#.*/gm,                                    css: 'preprocessor' },      // preprocessor tags like #region and #endregion
             { regex: new RegExp(this.getKeywords(keywords), 'gm'),  css: 'keyword' }            // keywords
             ];
-    
+
         this.forHtmlScript(r.scriptScriptTags);
         this.langLabel = "Javascript";
     };
@@ -1865,7 +1865,7 @@ typeof(exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter :
         {
             return '\\b([a-z_]|)' + str.replace(/ /g, '(?=:)\\b|\\b([a-z_\\*]|\\*|)') + '(?=:)\\b';
         };
-    
+
         function getValuesCSS(str)
         {
             return '\\b' + str.replace(/ /g, '(?!-)(?!:)\\b|\\b()') + '\:\\b';
@@ -1902,7 +1902,7 @@ typeof(exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter :
                         'upper-roman url visible wait white wider w-resize x-fast x-high x-large x-loud x-low x-slow x-small x-soft xx-large xx-small yellow';
 
         var fonts =     '[mM]onospace [tT]ahoma [vV]erdana [aA]rial [hH]elvetica [sS]ans-serif [sS]erif [cC]ourier mono sans serif';
-    
+
         this.regexList = [
             { regex: SyntaxHighlighter.regexLib.multiLineCComments,     css: 'comments' },  // multiline comments
             { regex: SyntaxHighlighter.regexLib.doubleQuotedString,     css: 'string' },    // double quoted strings
@@ -1915,9 +1915,9 @@ typeof(exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter :
             { regex: new RegExp(this.getKeywords(fonts), 'g'),          css: 'color1' }     // fonts
             ];
 
-        this.forHtmlScript({ 
-            left: /(&lt;|<)\s*style.*?(&gt;|>)/gi, 
-            right: /(&lt;|<)\/\s*style\s*(&gt;|>)/gi 
+        this.forHtmlScript({
+            left: /(&lt;|<)\s*style.*?(&gt;|>)/gi,
+            right: /(&lt;|<)\/\s*style\s*(&gt;|>)/gi
             });
         this.langLabel = "CSS";
     };
@@ -1981,7 +1981,7 @@ typeof(exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter :
                         'function global goto if implements include include_once interface instanceof insteadof namespace new ' +
                         'old_function or private protected public return require require_once static switch ' +
                         'trait throw try use var while xor yield ';
-        
+
         var constants   = '__FILE__ __LINE__ __METHOD__ __FUNCTION__ __CLASS__';
 
         this.regexList = [
@@ -2105,7 +2105,7 @@ typeof(exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter :
                 ? 'color1'
                 : 'comments'
                 ;
-            
+
             return [new SyntaxHighlighter.Match(match[0], match.index, css)];
         }
 
@@ -2120,7 +2120,7 @@ typeof(exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter :
             { regex: /\bpartial(?=\s+(?:class|interface|struct)\b)/g,   css: 'keyword' },           // contextual keyword: 'partial'
             { regex: /\byield(?=\s+(?:return|break)\b)/g,               css: 'keyword' }            // contextual keyword: 'yield'
             ];
-        
+
         this.forHtmlScript(SyntaxHighlighter.regexLib.aspScriptTags);
         this.langLabel = "C#";
     };

@@ -10,7 +10,7 @@ properties in a plot.
 
 This plugin allows you to plot error-bars over points. Set "errorbars" inside
 the points series to the axis name over which there will be error values in
-your data array (*even* if you do not intend to plot them later, by setting
+your data array (*even* if you do not intend to plot them later, by settings
 "show: null" on xerr/yerr).
 
 The plugin supports these options:

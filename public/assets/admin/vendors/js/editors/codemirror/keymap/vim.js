@@ -266,7 +266,7 @@
         enterVimMode(cm);
     }
 
-    // Deprecated, simply setting the keymap works again.
+    // Deprecated, simply settings the keymap works again.
     CodeMirror.defineOption('vimMode', false, function(cm, val, prev) {
       if (val && cm.getOption("keyMap") != "vim")
         cm.setOption("keyMap", "vim");

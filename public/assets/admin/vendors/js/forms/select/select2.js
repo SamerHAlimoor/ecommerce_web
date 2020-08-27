@@ -363,7 +363,7 @@ var requirejs, require, define;
             ret = callback ? callback.apply(defined[name], args) : undefined;
 
             if (name) {
-                //If setting exports via "module" is in play,
+                //If settings exports via "module" is in play,
                 //favor that over return value and exports. After that,
                 //favor a non-undefined return value over exports use.
                 if (cjsModule && cjsModule.exports !== undef &&
@@ -5562,7 +5562,7 @@ S2.define('select2/core',[
         arguments.length > 0 && window.console && console.warn) {
       console.warn(
         'Select2: Data can no longer be set using `select2("data")`. You ' +
-        'should consider setting the value instead using `$element.val()`.'
+        'should consider settings the value instead using `$element.val()`.'
       );
     }
 

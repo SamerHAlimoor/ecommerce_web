@@ -92,7 +92,7 @@ class UploadHandler
             // Defines which files (based on their names) are accepted for upload:
             'accept_file_types' => '/.+$/i',
             // The php.ini settings upload_max_filesize and post_max_size
-            // take precedence over the following max_file_size setting:
+            // take precedence over the following max_file_size settings:
             'max_file_size' => null,
             'min_file_size' => 1,
             // The maximum number of files for the upload directory:

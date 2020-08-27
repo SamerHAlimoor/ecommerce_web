@@ -785,12 +785,12 @@
 				this.viewDate = this.o.defaultViewDate;
 
 			if (fromArgs){
-				// setting date by clicking
+				// settings date by clicking
 				this.setValue();
 				this.element.change();
 			}
 			else if (this.dates.length){
-				// setting date by typing
+				// settings date by typing
 				if (String(oldDates) !== String(this.dates) && fromArgs) {
 					this._trigger('changeDate');
 					this.element.change();

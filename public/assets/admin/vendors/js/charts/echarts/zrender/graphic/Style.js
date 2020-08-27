@@ -177,7 +177,7 @@ define(function (require) {
         },
 
         /**
-         * Batch setting style with a given object
+         * Batch settings style with a given object
          * @param {Object|string} obj
          * @param {*} [obj]
          */
