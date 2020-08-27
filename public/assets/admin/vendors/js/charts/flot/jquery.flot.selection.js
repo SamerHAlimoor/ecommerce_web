@@ -12,7 +12,7 @@ selection: {
 	minSize: number of pixels
 }
 
-Selection support is enabled by setting the mode to one of "x", "y" or "xy".
+Selection support is enabled by settings the mode to one of "x", "y" or "xy".
 In "x" mode, the user will only be able to specify the x range, similarly for
 "y" mode. For "xy", the selection becomes a rectangle where both ranges can be
 specified. "color" is color of the selection (if you need to change the color
@@ -24,8 +24,8 @@ be customized to determine the smallest size a selection can be and still
 have the selection rectangle be displayed. When customizing this value, the
 fact that it refers to pixels, not axis units must be taken into account.
 Thus, for example, if there is a bar graph in time mode with BarWidth set to 1
-minute, setting "minSize" to 1 will not make the minimum selection size 1
-minute, but rather 1 pixel. Note also that setting "minSize" to 0 will prevent
+minute, settings "minSize" to 1 will not make the minimum selection size 1
+minute, but rather 1 pixel. Note also that settings "minSize" to 0 will prevent
 "plotunselected" events from being fired when the user clicks the mouse without
 dragging.
 
@@ -45,7 +45,7 @@ parameters as the "plotselected" event, in case you want to know what's
 happening while it's happening,
 
 A "plotunselected" event with no arguments is emitted when the user clicks the
-mouse to remove the selection. As stated above, setting "minSize" to 0 will
+mouse to remove the selection. As stated above, settings "minSize" to 0 will
 destroy this behavior.
 
 The plugin allso adds the following methods to the plot object:
@@ -94,11 +94,11 @@ The plugin allso adds the following methods to the plot object:
         var savedhandlers = {};
 
         var mouseUpHandler = null;
-        
+
         function onMouseMove(e) {
             if (selection.active) {
                 updateSelection(e);
-                
+
                 plot.getPlaceholder().trigger("plotselecting", [ getSelection() ]);
             }
         }
@@ -106,7 +106,7 @@ The plugin allso adds the following methods to the plot object:
         function onMouseDown(e) {
             if (e.which != 1)  // only accept left-click
                 return;
-            
+
             // cancel out any text selections
             document.body.focus();
 
@@ -127,13 +127,13 @@ The plugin allso adds the following methods to the plot object:
             // this is a bit silly, but we have to use a closure to be
             // able to whack the same handler again
             mouseUpHandler = function (e) { onMouseUp(e); };
-            
+
             $(document).one("mouseup", mouseUpHandler);
         }
 
         function onMouseUp(e) {
             mouseUpHandler = null;
-            
+
             // revert drag stuff for old-school browsers
             if (document.onselectstart !== undefined)
                 document.onselectstart = savedhandlers.onselectstart;
@@ -158,13 +158,13 @@ The plugin allso adds the following methods to the plot object:
         function getSelection() {
             if (!selectionIsSane())
                 return null;
-            
+
             if (!selection.show) return null;
 
             var r = {}, c1 = selection.first, c2 = selection.second;
             $.each(plot.getAxes(), function (name, axis) {
                 if (axis.used) {
-                    var p1 = axis.c2p(c1[axis.direction]), p2 = axis.c2p(c2[axis.direction]); 
+                    var p1 = axis.c2p(c1[axis.direction]), p2 = axis.c2p(c2[axis.direction]);
                     r[name] = { from: Math.min(p1, p2), to: Math.max(p1, p2) };
                 }
             });
@@ -252,10 +252,10 @@ The plugin allso adds the following methods to the plot object:
                 from = to;
                 to = tmp;
             }
-            
+
             return { from: from, to: to, axis: axis };
         }
-        
+
         function setSelection(ranges, preventEvent) {
             var axis, range, o = plot.getOptions();
 
@@ -333,11 +333,11 @@ The plugin allso adds the following methods to the plot object:
                 ctx.restore();
             }
         });
-        
+
         plot.hooks.shutdown.push(function (plot, eventHolder) {
             eventHolder.unbind("mousemove", onMouseMove);
             eventHolder.unbind("mousedown", onMouseDown);
-            
+
             if (mouseUpHandler)
                 $(document).unbind("mouseup", mouseUpHandler);
         });

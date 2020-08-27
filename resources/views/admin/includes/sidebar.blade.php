@@ -84,17 +84,17 @@
 
 
             <li class=" nav-item"><a href="#"><i class="la la-television"></i><span class="menu-title"
-                                                                                    data-i18n="nav.templates.main">الاعدادات</span></a>
+                                                                                    data-i18n="nav.templates.main">{{__('admins/sidebar.settings')}}</span></a>
                 <ul class="menu-content">
-                    <li><a class="menu-item" href="#" data-i18n="nav.templates.vert.main">وسائل التوصيل</a>
+                    <li><a class="menu-item" href="#" data-i18n="nav.templates.vert.main">{{__('admins/sidebar.MeansOfDelivery')}}</a>
                         <ul class="menu-content">
-                            <li><a class="menu-item" href="../vertical-menu-template"
-                                   data-i18n="nav.templates.vert.classic_menu">التوصيل المجاني</a>
+                            <li><a class="menu-item" href="{{route('edit.shippings.methods','free')}}"
+                                   data-i18n="nav.templates.vert.classic_menu">{{__('admins/sidebar.freeDelivery')}}</a>
                             </li>
-                            <li><a class="menu-item" href="../vertical-modern-menu-template">التوصيل الداخلي</a>
+                            <li><a class="menu-item" href="{{route('edit.shippings.methods','inside')}}">{{__('admins/sidebar.innerDelivery')}}</a>
                             </li>
-                            <li><a class="menu-item" href="../vertical-compact-menu-template"
-                                   data-i18n="nav.templates.vert.compact_menu">التوصيل الخارجي</a>
+                            <li><a class="menu-item" href="{{route('edit.shippings.methods','outline')}}"
+                                   data-i18n="nav.templates.vert.compact_menu">{{__('admins/sidebar.outerDelivery')}}</a>
                             </li>
 
                         </ul>

@@ -53,7 +53,7 @@ $(window).on("load", function(){
                 'stroke-dashoffset': -pathLength + 'px'
             });
 
-            // We can't use guided mode as the animations need to rely on setting begin manually
+            // We can't use guided mode as the animations need to rely on settings begin manually
             // See http://gionkunz.github.io/chartist-js/api-documentation.html#chartistsvg-function-animate
             data.element.animate(animationDefinition, false);
         }

@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/', function () {
-    return "Main Page";
+Route::group(
+    [
+        'prefix' => LaravelLocalization::setLocale(),
+        'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
+    ], function(){ //...
+        return "main Web Route";
 });

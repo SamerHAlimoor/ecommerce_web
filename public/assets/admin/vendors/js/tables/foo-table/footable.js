@@ -1168,7 +1168,7 @@
 			return this.column.formatter.call(this.column, value, this.ft.o, this.row.value);
 		},
 		/**
-		 * Allows easy access to getting or setting the cell's value. If the value is set all associated properties are also updated along with the actual element.
+		 * Allows easy access to getting or settings the cell's value. If the value is set all associated properties are also updated along with the actual element.
 		 * Using this method also allows us to supply an object containing options and the value for the cell.
 		 * @instance
 		 * @param {*} [value] - The value to set for the cell. If not supplied the current value of the cell is returned.
@@ -1682,7 +1682,7 @@
 			});
 		},
 		/**
-		 * Allows easy access to getting or setting the row's data. If the data is set all associated properties are also updated along with the actual element.
+		 * Allows easy access to getting or settings the row's data. If the data is set all associated properties are also updated along with the actual element.
 		 * Using this method also allows us to supply an object containing options and the data for the row at the same time.
 		 * @instance
 		 * @param {object} [data] - The data to set for the row. If not supplied the current value of the row is returned.
@@ -4001,7 +4001,7 @@
 			});
 		},
 		/**
-		 * Creates the filtering UI from the current options setting the various jQuery properties of this component.
+		 * Creates the filtering UI from the current options settings the various jQuery properties of this component.
 		 * @instance
 		 * @protected
 		 * @this FooTable.Filtering
@@ -4452,7 +4452,7 @@
 			this.val(query);
 		},
 		/**
-		 * Gets or sets the value for the query. During set the value is parsed setting all properties as required.
+		 * Gets or sets the value for the query. During set the value is parsed settings all properties as required.
 		 * @param {string} [value] - If supplied the value to set for this query.
 		 * @returns {(string|undefined)}
 		 */
@@ -4904,7 +4904,7 @@
 			});
 		},
 		/**
-		 * Updates the sorting UI setting the state of the sort buttons.
+		 * Updates the sorting UI settings the state of the sort buttons.
 		 * @instance
 		 * @protected
 		 */
@@ -5538,7 +5538,7 @@
 			this.formattedCount = this.format(this.countFormat);
 		},
 		/**
-		 * Updates the paging UI setting the state of the pagination control.
+		 * Updates the paging UI settings the state of the pagination control.
 		 * @instance
 		 * @protected
 		 */
@@ -5576,7 +5576,7 @@
 			}
 		},
 		/**
-		 * Creates the paging UI from the current options setting the various jQuery properties of this component.
+		 * Creates the paging UI from the current options settings the various jQuery properties of this component.
 		 * @instance
 		 * @protected
 		 */
@@ -6115,7 +6115,7 @@
 			 * @type {string}
 			 */
 			this.deleteText = table.o.editing.deleteText;
-			
+
 			/**
 			 * The text that appears in the view button. This can contain HTML.
 			 * @type {string}
@@ -6291,7 +6291,7 @@
 			});
 		},
 		/**
-		 * Creates the editing UI from the current options setting the various jQuery properties of this component.
+		 * Creates the editing UI from the current options settings the various jQuery properties of this component.
 		 * @instance
 		 * @protected
 		 */
@@ -6810,7 +6810,7 @@
 	 * can be set to false and then followed by a call to the {@link FooTable.Table#draw} method.
 	 */
 	F.Rows.prototype.update = function(indexOrRow, data, redraw){
-		var len = this.ft.rows.all.length, 
+		var len = this.ft.rows.all.length,
 			row = indexOrRow;
 		if (F.is.number(indexOrRow) && indexOrRow >= 0 && indexOrRow < len){
 			row = this.ft.rows.all[indexOrRow];
@@ -6827,7 +6827,7 @@
 	 * can be set to false and then followed by a call to the {@link FooTable.Table#draw} method.
 	 */
 	F.Rows.prototype.delete = function(indexOrRow, redraw){
-		var len = this.ft.rows.all.length, 
+		var len = this.ft.rows.all.length,
 			row = indexOrRow;
 		if (F.is.number(indexOrRow) && indexOrRow >= 0 && indexOrRow < len){
 			row = this.ft.rows.all[indexOrRow];

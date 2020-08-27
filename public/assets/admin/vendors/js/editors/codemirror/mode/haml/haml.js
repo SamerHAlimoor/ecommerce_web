@@ -142,7 +142,7 @@
             state.tokenize = html;
           }
         }
-        // reprocess some of the specific style tag when finish setting previousToken
+        // reprocess some of the specific style tag when finish settings previousToken
         if (style == "hamlTag") {
           style = "tag";
         } else if (style == "commentLine") {

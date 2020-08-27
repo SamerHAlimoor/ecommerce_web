@@ -125,7 +125,7 @@ $(window).on("load", function(){
                 tooltip: {content: "Paris - New-York"}
             },
             'parissanfrancisco': {
-                // The curve can be inverted by setting a negative factor
+                // The curve can be inverted by settings a negative factor
                 factor: -0.5,
                 between: ['paris', 'sanfrancisco'],
                 attrs: {

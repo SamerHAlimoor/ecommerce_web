@@ -34,7 +34,7 @@ tinymce.PluginManager.add('nonbreaking', function(editor) {
 	});
 
 	if (setting) {
-		var spaces = +setting > 1 ? +setting : 3;  // defaults to 3 spaces if setting is true (or 1)
+		var spaces = +setting > 1 ? +setting : 3;  // defaults to 3 spaces if settings is true (or 1)
 
 		editor.on('keydown', function(e) {
 			if (e.keyCode == 9) {

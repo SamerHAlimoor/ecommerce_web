@@ -27,9 +27,12 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
     });
 });
   */
-Route::group(['namespace'=>'Site'], function(){
-    Route::get('/login',function (){
-        return "This is Not  site , please Login ";
-    })->name("login");
-});
+Route::group(
+    [
+        'prefix' => LaravelLocalization::setLocale(),
+        'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
+    ], function(){ //...
+    Route::get('/',function (){
+        return   "main Site Route";
+    });});
 

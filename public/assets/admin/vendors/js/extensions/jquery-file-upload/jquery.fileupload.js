@@ -77,7 +77,7 @@
     }
 
     // The fileupload widget listens for change events on file input fields defined
-    // via fileInput setting and paste or drop events of the given dropZone.
+    // via fileInput settings and paste or drop events of the given dropZone.
     // In addition to the default jQuery Widget methods, the fileupload widget
     // exposes the "add" and "send" methods, to add or directly send files using
     // the fileupload API.
@@ -101,7 +101,7 @@
             // By default, the file input field is replaced with a clone after
             // each input field change event. This is required for iframe transport
             // queues and allows change events to be fired for the same file
-            // selection, but can be disabled by setting the following option to false:
+            // selection, but can be disabled by settings the following option to false:
             replaceFileInput: true,
             // The parameter name for the file form data (the request argument name).
             // If undefined or empty, the name property of the file input field is
@@ -150,7 +150,7 @@
             // be uploaded as a whole.
             maxChunkSize: undefined,
             // When a non-multipart upload or a chunked multipart upload has been
-            // aborted, this option can be used to resume the upload by setting
+            // aborted, this option can be used to resume the upload by settings
             // it to the size of the already uploaded bytes. This option is most
             // useful when modifying the options object inside of the "add" or
             // "send" callbacks, as the options are cloned for each file upload.
@@ -443,7 +443,7 @@
             var that = this,
                 formData,
                 file = options.files[0],
-                // Ignore non-multipart setting if not supported:
+                // Ignore non-multipart settings if not supported:
                 multipart = options.multipart || !$.support.xhrFileUpload,
                 paramName = $.type(options.paramName) === 'array' ?
                     options.paramName[0] : options.paramName;

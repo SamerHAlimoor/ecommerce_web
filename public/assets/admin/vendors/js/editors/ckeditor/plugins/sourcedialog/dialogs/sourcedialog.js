@@ -26,7 +26,7 @@ CKEDITOR.dialog.add( 'sourcedialog', function( editor ) {
 
 		onOk: ( function() {
 			function setData( dialog, newData ) {
-				// [IE8] Focus editor before setting selection to avoid setting data on
+				// [IE8] Focus editor before settings selection to avoid settings data on
 				// locked selection, because in case of inline editor, it won't be
 				// unlocked before editable's HTML is altered. (#11585)
 				editor.focus();
@@ -55,7 +55,7 @@ CKEDITOR.dialog.add( 'sourcedialog', function( editor ) {
 				} );
 
 				// Don't let the dialog close before setData is over, to hide
-				// from user blinking caused by selection restoring and setting new data.
+				// from user blinking caused by selection restoring and settings new data.
 				return false;
 			};
 		} )(),
