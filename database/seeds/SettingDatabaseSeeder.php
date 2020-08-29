@@ -14,7 +14,7 @@ class SettingDatabaseSeeder extends Seeder
     {
         //
        Setting::setMany([
-            'default_locale'=>'en',
+            'default_locale'=>'ar',
             'default_timezone'=>'Asia/Gaza',
             'reviews_enabled'=>true,
             'auto_approve_reviews'=>true,

@@ -17,5 +17,7 @@ return [
     'email' => 'This field must be email',
     'en'=>'English Language ',
     'ar'=>'Arabic Language ',
+    'nullable' => 'must be number',
+
 
 ];
