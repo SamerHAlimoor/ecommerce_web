@@ -21,11 +21,20 @@ Route::group(
     Route::group(['namespace'=>'Dashborad','middleware'=>'auth:admin','prefix'=>'admin'], function()
     {
 
+
+
         Route::get('/','DashboradController@index' )->name('admin.dashboard');
+        Route::get('/logout','LoginController@logout')->name("admin.logout");
+
         Route::group(['prefix'=> 'settings'],function (){
             Route::get('/shippings-method/{type}','SettingController@editShippingMethods' )->name('edit.shippings.methods');
             Route::put('/shippings-method/{id}','SettingController@updateShippingMethods' )->name('update.shippings.methods');
 
+        });
+
+        Route::group(['prefix'=> 'profile'],function (){
+            Route::get('/edit','ProfileController@editProfile' )->name('profile.edit');
+            Route::put('/update','ProfileController@updateProfile' )->name('profile.update');
         });
 
 

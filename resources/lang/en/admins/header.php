@@ -12,13 +12,7 @@ return [
     | these language lines according to your application's requirements.
     |
     */
-
-    'settings'=>'Settings',
-    'MeansOfDelivery'=>'Means of delivery',
-    'freeDelivery'=>'Free delivery',
-    'innerDelivery'=>'Inner delivery',
-    'outerDelivery'=>'Outer delivery',
-    'home'=>'Home'
+    'welcome'=>'Welcome',
 
 
 

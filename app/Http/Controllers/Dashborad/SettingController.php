@@ -30,6 +30,8 @@ class SettingController extends Controller
 
     public  function updateShippingMethods(ShippingRequest $request,$id){
 
+
+       // return $request;
         try {
             $shippingMethod=Setting::find($id);
             DB::beginTransaction();
