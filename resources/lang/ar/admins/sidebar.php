@@ -18,4 +18,5 @@ return [
     'freeDelivery'=>'التوصيل المجاني',
     'innerDelivery'=>'التوصيل الداخلي',
     'outerDelivery'=>'التوصيل الخارجي',
+    'home'=>'الرئيسية'
 ];

@@ -13,12 +13,7 @@ return [
     |
     */
 
-    'settings'=>'Settings',
-    'MeansOfDelivery'=>'Means of delivery',
-    'freeDelivery'=>'Free delivery',
-    'innerDelivery'=>'Inner delivery',
-    'outerDelivery'=>'Outer delivery',
-    'home'=>'Home'
+    'welcome'=>'مرحبا',
 
 
 
