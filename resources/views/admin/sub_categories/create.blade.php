@@ -43,7 +43,7 @@
                                 <div class="card-content collapse show">
                                     <div class="card-body">
                                         <form class="form"
-                                              action="{{route('admin.main.categories.store')}}"
+                                              action="{{route('admin.subcategories.store')}}"
                                               method="POST"
                                               enctype="multipart/form-data">
                                             @csrf
@@ -64,6 +64,27 @@
                                             <div class="form-body">
 
                                                 <h4 class="form-section"><i class="ft-home"></i> بيانات القسم </h4>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label for="projectinput2"> أختر القسم </label>
+                                                            <select name="parent_id" class="select2 form-control">
+                                                                <optgroup label="من فضلك أختر القسم ">
+                                                                    @if($categories && $categories -> count() > 0)
+                                                                        @foreach($categories as $category)
+                                                                            <option
+                                                                                value="{{$category -> id }}">{{$category -> name}}</option>
+                                                                        @endforeach
+                                                                    @endif
+                                                                </optgroup>
+                                                            </select>
+                                                            @error('parent_id')
+                                                            <span class="text-danger"> {{$message}}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
@@ -104,14 +125,14 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group mt-1">
                                                             <input type="checkbox" value="1"
-                                                                   name="is_active"
+                                                                   name="active"
                                                                    id="switcheryColor4"
                                                                    class="switchery" data-color="success"
                                                                    checked />
                                                             <label for="switcheryColor4"
                                                                    class="card-title ml-1">الحالة  </label>
 
-                                                            @error("is_active")
+                                                            @error("active")
                                                             <span class="text-danger">{{$message }}</span>
                                                             @enderror
                                                         </div>
@@ -126,7 +147,7 @@
                                                     <i class="ft-x"></i> تراجع
                                                 </button>
                                                 <button type="submit" class="btn btn-primary">
-                                                    <i class="la la-check-square-o"></i> تحديث
+                                                    <i class="la la-check-square-o"></i> حقظ
                                                 </button>
                                             </div>
                                         </form>
