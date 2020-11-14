@@ -106,10 +106,11 @@ class BrandsController extends Controller
             }
             $brand->update($request->except('_token', 'id', 'photo'));
             $brand->name = $request->name;
+          //  return $request;
             $brand->save();
-
-            return redirect()->route('admin.brands')->with(['success' => 'تم ألتحديث بنجاح']);
             DB::commit();
+
+            return redirect()->route('admin.brands')->with(['success' => 'تم التعديل  بنجاح']);
 
         } catch (\Exception $ex) {
             DB::rollBack();
