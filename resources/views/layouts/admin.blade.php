@@ -173,8 +173,11 @@
     $('#meridians14').timeDropper({
         meridians: true,setCurrentTime: false
     });
-</script>
 
+
+</script>
+@yield('script')
+ 
 </body>
 </html>
 

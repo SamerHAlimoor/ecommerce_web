@@ -2,10 +2,9 @@
 
 namespace App\Http\Requests;
 
-use App\Http\Enumerations\CategorieyType\CategorieyType;
 use Illuminate\Foundation\Http\FormRequest;
 
-class MainCategoriesRequest extends FormRequest
+class GeneralProductRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,9 +25,15 @@ class MainCategoriesRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'type' => 'required|in:1,2',
-            'slug' => 'required|unique:categories,slug,' . $this->id,
+            'name' => 'required|max:100',
+            'slug' => 'required|unique:products,slug',
+            'description' => 'required|max:1000',
+            'short_description' => 'nullable|max:500',
+            'categories' => 'array|min:1',
+            'categories.*' => 'numeric|exists:categories,id',
+            'tags' => 'nullable',
+            'brand_id' => 'required|exists:brands,id',
+
         ];
     }
 }

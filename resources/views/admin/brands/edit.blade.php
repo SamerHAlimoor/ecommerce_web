@@ -50,12 +50,12 @@
 
 
                                         <input name="id"  value="{{ $brand->id}}" type="hidden">
-                                        
+
 
                                             <div class="form-body">
 
                                                 <h4 class="form-section"><i class="ft-home"></i> بيانات الماركة </h4>
-                                
+
 
                                                 <div class="row">
                                                     <div class="col-md-6">
@@ -80,7 +80,7 @@
                                                                    class="switchery" data-color="success"
                                                                    @if ($brand->is_active ==0)
                                                                    checked
-                                                                   @endif 
+                                                                   @endif
                                                                     />
                                                             <label for="switcheryColor4"
                                                                    class="card-title ml-1">الحالة  </label>
@@ -91,10 +91,10 @@
                                                         </div>
                                                     </div>
 
-                                                 
 
 
-                                                  
+
+
 
 
 
@@ -102,13 +102,13 @@
 
                                                 </div>
 
-                                               
 
-                                                
+
+
                                                 <div class="row">
                                                     <div class="col-md-3">
                                                     <div class="form-group">
-                                                        <label> الصورة الماركة jتعديل  </label>
+                                                        <label> تعديل صورة الماركة   </label>
                                                     </div>
                                                 </div>
 
@@ -117,7 +117,7 @@
                                                         <label id="projectinput7" class="file center-block">
                                                             <input type="file" id="file" name="photo">
                                                             <span class="file-custom"></span>
-                                                            <td> <img style="width: 150px; height: 100px;" src="{{ $brand->photo }} "></td>
+                                                            <td> <img style="width: 200px; height: 150px;" src="{{ $brand->photo }} "></td>
 
                                                         </label>
                                                     </div>

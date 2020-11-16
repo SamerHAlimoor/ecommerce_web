@@ -35,9 +35,9 @@ class BrandsController extends Controller
             DB::beginTransaction();
 
             if (!$request->has('is_active')) {
-                $request->request->add(['is_active' => 0]);
-            } else {
                 $request->request->add(['is_active' => 1]);
+            } else {
+                $request->request->add(['is_active' => 0]);
             }
 
             // save photo
@@ -50,7 +50,7 @@ class BrandsController extends Controller
             //save translation
             $brand->name = $request->name;
             $brand->photo = $fileName;
-            // return $request;
+            //return $request;
             $brand->save();
             // save image
 
@@ -106,10 +106,11 @@ class BrandsController extends Controller
             }
             $brand->update($request->except('_token', 'id', 'photo'));
             $brand->name = $request->name;
+            //  return $request;
             $brand->save();
-
-            return redirect()->route('admin.brands')->with(['success' => 'تم ألتحديث بنجاح']);
             DB::commit();
+
+            return redirect()->route('admin.brands')->with(['success' => 'تم التعديل  بنجاح']);
 
         } catch (\Exception $ex) {
             DB::rollBack();
