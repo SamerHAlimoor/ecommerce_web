@@ -48,6 +48,7 @@
                                             <thead>
                                             <tr>
                                                 <th>اسم القسم</th>
+                                                <th>اسم الرئيسي</th>
                                                 <th> الاسم بالرابط </th>
                                                 <th>الحالة</th>
                                                 <th>صوره القسم</th>
@@ -60,9 +61,10 @@
                                                 @foreach($categories as $category)
                                                     <tr>
                                                         <td>{{$category -> name}}</td>
+                                                        <td>{{$category -> _parent->name ?? 'قسم رئيسي'}}</td>
                                                         <td>{{$category -> slug}}</td>
                                                         <td>{{$category -> getActive()}}</td>
-                                                        <td> <img style="width: 150px; height: 100px;" src=" "></td>
+                                                        <td> <img style="width: 150px; height: 100px;" src=" {{ $category->photo }}"></td>
 
 {{--                                                        <td>{{$category ->getActive() }}</td>--}}
                                                         <td>

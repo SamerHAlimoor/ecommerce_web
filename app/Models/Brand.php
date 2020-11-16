@@ -34,5 +34,10 @@ class Brand extends Model
 
         return $query->select('id', 'is_active', 'photo');
     }
+    public function scopeActive($q)
+    {
+        # code...
+        return $q->where('is_active', 0);
+    }
 
 }

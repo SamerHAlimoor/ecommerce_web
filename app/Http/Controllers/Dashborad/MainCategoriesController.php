@@ -14,68 +14,73 @@ class MainCategoriesController extends Controller
     public function index()
     {
         # code...
-           $categories = Category::parent()->orderBy('id','DESC')->paginate(PAGNIATION_COUNT);
-        return view('admin.main_categories.index',compact('categories'));
+        $categories = Category::with('mainParent')->orderBy('id', 'DESC')->paginate(PAGNIATION_COUNT);
+        return view('admin.main_categories.index', compact('categories'));
     }
 
     public function create()
     {
-        # code...
-
-        return view('admin.main_categories.create');
+        # code...categories
+        $categories = Category::select('id', 'parent_id')->get();
+        return view('admin.main_categories.create', compact('categories'));
     }
 
     public function store(MainCategoriesRequest $request)
     {
 
-        try{
+        try {
 
             # code...
             DB::beginTransaction();
 
-            if (!$request->has('active'))
+            if (!$request->has('active')) {
                 $request->request->add(['active' => 0]);
-            else
+            } else {
                 $request->request->add(['active' => 1]);
+            }
+
+            $fileName = "";
+            if ($request->has('photo')) {
+                $fileName = uploadImage('categories', $request->photo);
+            }
             // update date
 
 //            if ($request->has('photo')) {
-//                $filePath = uploadImage('maincategories', $request->photo);
-//                MainCategorie::where('id', $id)
-//                    ->create([
-//                        'photo' => $filePath,
-//                    ]);
-//            }
+            //                $filePath = uploadImage('maincategories', $request->photo);
+            //                MainCategorie::where('id', $id)
+            //                    ->create([
+            //                        'photo' => $filePath,
+            //                    ]);
+            //    CategorieyType::mainCategory        }
+            if ($request->type == 1) {
+                $request->request->add(['parent_id' => null]);
+            }
 
-            $main_category = Category::create($request->except('_token'));
-            $main_category->name=$request->name;
+            $main_category = Category::create($request->except('_token', 'photo'));
+            $main_category->name = $request->name;
+            $main_category->photo = $fileName;
             $main_category->save();
             // save image
-
-
-
 
             DB::commit();
             return redirect()->route('admin.main.categories')->with(['success' => 'تم إضافة القسم بنجاح']);
 
-        }catch(\Exception $ex){
+        } catch (\Exception $ex) {
             DB::rollback();
             return redirect()->route('admin.main.categories')->with(['error' => 'هناك خطا ما يرجي المحاوله فيما بعد']);
 
         }
     }
 
-
     public function edit($id)
     {
         # code...
-        $catogrie= Category::find($id);
-        if(!$catogrie){
+        $catogrie = Category::find($id);
+        if (!$catogrie) {
             return redirect()->route('admin.main.categories')->with(['error' => 'هناك خطا ما يرجي المحاوله فيما بعد']);
 
         }
-        return view('admin.main_categories.edit',compact('catogrie'));
-
+        return view('admin.main_categories.edit', compact('catogrie'));
 
     }
 
@@ -83,32 +88,32 @@ class MainCategoriesController extends Controller
     {
 //
         try {
-            $main_category = Category::orderBy('id','DESC')->find($id);
+            $main_category = Category::orderBy('id', 'DESC')->find($id);
 
-            if (!$main_category)
+            if (!$main_category) {
                 return redirect()->route('admin.main.categories')->with(['error' => 'هذا القسم غير موجود ']);
-            if (!$request->has('active'))
+            }
+
+            if (!$request->has('active')) {
                 $request->request->add(['active' => 0]);
-            else
+            } else {
                 $request->request->add(['active' => 1]);
+            }
+
             // update date
 
 //            if ($request->has('photo')) {
-//                $filePath = uploadImage('maincategories', $request->photo);
-//                MainCategorie::where('id', $id)
-//                    ->update([
-//                        'photo' => $filePath,
-//                    ]);
-//            }
+            //                $filePath = uploadImage('maincategories', $request->photo);
+            //                MainCategorie::where('id', $id)
+            //                    ->update([
+            //                        'photo' => $filePath,
+            //                    ]);
+            //            }
 
             $main_category->update($request->all());
-            $main_category->name=$request->name;
+            $main_category->name = $request->name;
             $main_category->save();
             // save image
-
-
-
-
 
             return redirect()->route('admin.main.categories')->with(['success' => 'تم ألتحديث بنجاح']);
         } catch (\Exception $ex) {
@@ -121,26 +126,27 @@ class MainCategoriesController extends Controller
     {
         # code...
 
-        try{
+        try {
 
-            $maincategory = Category::orderBy('id','DESC')->find($id);
+            $maincategory = Category::orderBy('id', 'DESC')->find($id);
 
-            if (!$maincategory)
+            if (!$maincategory) {
                 return redirect()->route('admin.main.categories')->with(['error' => 'هذا القسم غير موجود ']);
+            }
 
 //            $vendors = $maincategory->vendors();
-//            if (isset($vendors) && $vendors->count() > 0) {
-//                return redirect()->route('admin.main.categories')->with(['error' => ' لأ يمكن حذف هذا القسم  لانه يوجد تجار']);
-//            }
-//            $image = Str::after($maincategory->photo, 'assets/');
-//            $image = base_path('assets/' . $image);
-//            unlink($image); //delete from folder
+            //            if (isset($vendors) && $vendors->count() > 0) {
+            //                return redirect()->route('admin.main.categories')->with(['error' => ' لأ يمكن حذف هذا القسم  لانه يوجد تجار']);
+            //            }
+            //            $image = Str::after($maincategory->photo, 'assets/');
+            //            $image = base_path('assets/' . $image);
+            //            unlink($image); //delete from folder
 
 //            $maincategory->categories()->delete();
             $maincategory->delete();
             return redirect()->route('admin.main.categories')->with(['success' => 'تم ألتحديث بنجاح']);
 
-        }catch(\Exception $ex){
+        } catch (\Exception $ex) {
             return redirect()->route('admin.main.categories')->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
         }
     }
@@ -149,12 +155,13 @@ class MainCategoriesController extends Controller
     {
         try {
             $maincategory = MainCategorie::find($id);
-            if (!$maincategory)
+            if (!$maincategory) {
                 return redirect()->route('admin.main.categories')->with(['error' => 'هذا القسم غير موجود ']);
+            }
 
-            $status =  $maincategory -> active  == 0 ? 1 : 0;
+            $status = $maincategory->active == 0 ? 1 : 0;
 
-            $maincategory -> update(['active' =>$status ]);
+            $maincategory->update(['active' => $status]);
 
             return redirect()->route('admin.main.categories')->with(['success' => ' تم تغيير الحالة بنجاح ']);
 

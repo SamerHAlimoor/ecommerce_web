@@ -117,6 +117,64 @@
                                                         </div>
                                                     </div>
                                                 </div>
+
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <div class="form-group mt-1">
+                                                          <input type="radio"
+                                                          name="type"
+                                                          value="1"
+                                                          checked
+                                                          class="switchery" data-color="success"
+                                                          >
+                                                          <label for="switcheryColor4"
+                                                          class="card-title ml-1">قسم رئيسي  </label>
+
+
+                                                            @error("type")
+                                                            <span class="text-danger">{{$message }}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group mt-1">
+                                                          <input type="radio"
+                                                          name="type"
+                                                          value="2"
+                                                          
+                                                          class="switchery" data-color="success"
+                                                          >
+                                                          <label for="switcheryColor4"
+                                                          class="card-title ml-1">قسم فرعي  </label>
+
+
+                                                            @error("type")
+                                                            <span class="text-danger">{{$message }}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-3">
+                                                        <div class="form-group mt-1">
+                                                        <div class="hidden" id="list-category">
+                                                            <label for="project">اختر القسم الرئيسي</label>
+                                                            <select name="parent_id" id="" class="select2 form-control">
+                                                                <optgroup label="اختر القسم من فضلك">
+                                                                    @if ($categories && $categories->count()>0)
+                                                                        @foreach ($categories as $category)
+                                                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                                        @endforeach
+                                                                    @endif
+                                                                </optgroup>
+                                                            </select>
+  
+                                                              @error("parent_id")
+                                                              <span class="text-danger">{{$message }}</span>
+                                                              @enderror
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
 
 
@@ -143,3 +201,19 @@
     </div>
 
 @stop
+@section('script')
+    <script>
+$('input:radio[name="type"]').change(
+function(){
+    if(this.checked && this.value =='2'){
+$('#list-category').removeClass('hidden');
+    }else{
+        $('#list-category').addClass('hidden');
+
+    }
+}
+
+);
+
+    </script>
+@endsection

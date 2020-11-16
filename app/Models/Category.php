@@ -12,7 +12,7 @@ class Category extends Model
     protected $with = ['translations']; // the name of table is  setting_translations and you will cutt the translation that you want to link the translation
     public $translatedAttributes = ['name'];
 
-    protected $fillable = ['parent_id', 'is_active', 'slug'];
+    protected $fillable = ['parent_id', 'is_active', 'slug', 'photo'];
     protected $hidden = ['translations'];
     protected $casts = [
         'is_active' => 'boolean',
@@ -26,7 +26,7 @@ class Category extends Model
         return $query->whereNotNull('parent_id');
     }
 
-    public function mainParen()
+    public function mainParent()
     {
         return $this->belongsTo(self::class, 'parent_id');
     }
@@ -43,4 +43,21 @@ class Category extends Model
         return $query->select('id', 'parent_id', 'is_active', 'slug');
     }
 
+    public function _parent()
+    {
+
+        return $this->belongsTo(self::class, 'parent_id');
+    }
+
+    public function getPhotoAttribute($val)
+    {
+        return ($val !== null) ? asset('assets/images/categories/' . $val) : "";
+
+    }
+
+    public function scopeActive($q)
+    {
+        # code...
+        return $q->where('is_active', 0);
+    }
 }

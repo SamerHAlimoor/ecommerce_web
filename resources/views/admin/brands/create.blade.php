@@ -75,14 +75,14 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group mt-1">
                                                             <input type="checkbox" value="1"
-                                                                   name="active"
+                                                                   name="is_active"
                                                                    id="switcheryColor4"
                                                                    class="switchery" data-color="success"
                                                                    checked />
                                                             <label for="switcheryColor4"
                                                                    class="card-title ml-1">الحالة  </label>
 
-                                                            @error("active")
+                                                            @error("is_active")
                                                             <span class="text-danger">{{$message }}</span>
                                                             @enderror
                                                         </div>

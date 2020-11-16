@@ -15,4 +15,15 @@ class Tag extends Model
 
     protected $fillable = ['slug'];
     protected $hidden = ['translations'];
+
+    public function scopeSelection($query)
+    {
+
+        return $query->select('id', 'name');
+    }
+    public function scopeActive($q)
+    {
+        # code...
+        return $q->select('id', 'name');
+    }
 }
