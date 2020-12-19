@@ -47,10 +47,10 @@
                                               method="POST"
                                               enctype="multipart/form-data">
                                             @csrf
-                            
+
                                             <div class="form-body">
 
-                                                
+
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
@@ -85,24 +85,24 @@
                                                     <div class="row">
                                                         <div class="col-md-6">
                                                             <div class="form-group">
-                                                                <label for="projectinput1"> وصف المنتج 
+                                                                <label for="projectinput1"> وصف المنتج
                                                                 </label>
                                                                 <textarea   class="form-control" for="projectinput1" id="description" name="description" rows="2" cols="100"style="align-content:center; overflow:auto;">
-                                                                    {{old('description')}}  
-                                                                </textarea>                                                    
+                                                                    {{old('description')}}
+                                                                </textarea>
                                                                 @error("description")
                                                                 <span class="text-danger">{{$message}}</span>
                                                                 @enderror
                                                             </div>
                                                         </div>
-    
+
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label for="projectinput1"> الوصف المختصر
                                                                 </label>
                                                                 <textarea   class="form-control" id="short_description" name="short_description" rows="2" cols="100"style="align-content:center; overflow:auto;">
-                                                                    {{old('short_description')}}  
-                                                                </textarea>                                                    
+                                                                    {{old('short_description')}}
+                                                                </textarea>
                                                                 @error("short_description")
                                                                 <span class="text-danger">{{$message}}</span>
                                                                 @enderror
@@ -110,9 +110,9 @@
                                                         </div>
 
 
-                                                       
+
                                                 </div>
-                                               
+
                                             </div>
 
                                             <div class="row">
@@ -122,8 +122,8 @@
                                                         <label for="project">اختر القسم الرئيسي</label>
                                                         <select name="categories[]" id="" class="select2 form-control" multiple>
                                                             <optgroup label="اختر القسم من فضلك">
-                                                                @if ($categories && $categories->count()>0)
-                                                                    @foreach ($categories as $category)
+                                                                @if ($data['categories'] && $data['categories']->count()>0)
+                                                                    @foreach ($data['categories'] as $category)
                                                                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                                                                     @endforeach
                                                                 @endif
@@ -142,13 +142,15 @@
                                                         <label for="project">اختر العلامات الدلالية </label>
                                                         <select name="tags[]" id="" class="select2 form-control" multiple>
                                                             <optgroup label="اختر العلامات الدلالية ">
-                                                                @if ($tags && $tags->count()>0)
-                                                                    @foreach ($tags as $tag)
+                                                                @if ($data['tags'] && $data['tags']->count()>0)
+                                                                    @foreach ($data['tags'] as $tag)
                                                                         <option value="{{ $tag->id }}">{{ $tag->name }}</option>
                                                                     @endforeach
                                                                 @endif
                                                             </optgroup>
                                                         </select>
+
+
 
                                                           @error("tags")
                                                           <span class="text-danger">{{$message }}</span>
@@ -162,8 +164,8 @@
                                                         <label for="project">اختر  الماركة </label>
                                                         <select name="brand_id" id="" class="select2 form-control" >
                                                             <optgroup label="اختر الماركة ">
-                                                                @if ($brands && $brands->count()>0)
-                                                                    @foreach ($brands as $brand)
+                                                                @if ($data['brands'] && $data['brands']->count()>0)
+                                                                    @foreach ($data['brands'] as $brand)
                                                                         <option value="{{ $brand->id }}">{{ $brand->name }}</option>
                                                                     @endforeach
                                                                 @endif
@@ -182,14 +184,14 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group mt-1">
                                                         <input type="checkbox" value="1"
-                                                               name="active"
+                                                               name="is_active"
                                                                id="switcheryColor4"
                                                                class="switchery" data-color="success"
                                                                checked />
                                                         <label for="switcheryColor4"
                                                                class="card-title ml-1">الحالة  </label>
 
-                                                        @error("active")
+                                                        @error("is_active")
                                                         <span class="text-danger">{{$message }}</span>
                                                         @enderror
                                                     </div>
