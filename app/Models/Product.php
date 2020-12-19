@@ -28,7 +28,7 @@ class Product extends Model
     ];
     public $translatedAttributes = ['name', 'description', 'short_description'];
 
-    public function brand()
+    public function brands()
     {
         return $this->belongsTo(Brand::class)->withDefault();
     }
@@ -39,5 +39,16 @@ class Product extends Model
     public function tags()
     {
         return $this->belongsToMany(Tag::class, 'product_tags');
+    }
+
+    public function getActive()
+    {
+        # code...
+        return ($this->is_active == 0) ? 'غير مفعل ' : ' مفعل';
+    }
+    public function scopeSelection($query)
+    {
+
+        return $query->select('id', 'name');
     }
 }

@@ -94,6 +94,7 @@ class BrandsController extends Controller
             if (!$request->has('is_active')) {
                 $request->request->add(['is_active' => 1]);
             } else {
+
                 $request->request->add(['is_active' => 0]);
             }
 

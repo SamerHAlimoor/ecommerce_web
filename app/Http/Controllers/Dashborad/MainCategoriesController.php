@@ -33,30 +33,23 @@ class MainCategoriesController extends Controller
             # code...
             DB::beginTransaction();
 
-            if (!$request->has('active')) {
-                $request->request->add(['active' => 0]);
+            if (!$request->has('is_active')) {
+                $request->request->add(['is_active' => 1]);
             } else {
-                $request->request->add(['active' => 1]);
+                $request->request->add(['is_active' => 0]);
             }
 
             $fileName = "";
             if ($request->has('photo')) {
                 $fileName = uploadImage('categories', $request->photo);
             }
-            // update date
 
-//            if ($request->has('photo')) {
-            //                $filePath = uploadImage('maincategories', $request->photo);
-            //                MainCategorie::where('id', $id)
-            //                    ->create([
-            //                        'photo' => $filePath,
-            //                    ]);
-            //    CategorieyType::mainCategory        }
             if ($request->type == 1) {
                 $request->request->add(['parent_id' => null]);
             }
 
-            $main_category = Category::create($request->except('_token', 'photo'));
+            $main_category = Category::create($request->except('_token'));
+
             $main_category->name = $request->name;
             $main_category->photo = $fileName;
             $main_category->save();

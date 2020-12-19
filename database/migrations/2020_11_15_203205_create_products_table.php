@@ -33,6 +33,7 @@ class CreateProductsTable extends Migration
             $table->softDeletes();
             $table->timestamps();
 
+
         });
     }
 

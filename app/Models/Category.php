@@ -34,7 +34,7 @@ class Category extends Model
     public function getActive()
     {
         # code...
-        return $this->is_active == 1 ? 'مفعل' : 'غير مفعل';
+        return $this->is_active == 0 ? 'مفعل' : 'غير مفعل';
     }
 
     public function scopeSelection($query)
@@ -60,4 +60,8 @@ class Category extends Model
         # code...
         return $q->where('is_active', 0);
     }
+
+    //get all childrens=
+
+   
 }

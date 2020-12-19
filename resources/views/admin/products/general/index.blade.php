@@ -44,38 +44,39 @@
                                 <div class="card-content collapse show">
                                     <div class="card-body card-dashboard">
                                         <table
-                                            class="table display nowrap table-striped table-bordered scroll-horizontal">
+                                        id="dtBasicExample"
+                                            class="table display nowrap table-striped table-bordered" cellspacing="0" width="100%">
                                             <thead>
                                             <tr>
-                                                <th>  اسم القسم الفرعي</th>
-                                                <th>اسم الرئيسي</th>
+                                                <th> رقم المنتج  </th>
+                                                <th>اسم المنتج</th>
 
-                                                <th> الاسم بالرابط </th>
-                                                <th>الحالة</th>
-                                                <th>صوره القسم</th>
+
+                                                <th> السعر </th>
+                                                <th> الحالة </th>
+                                                <th> تاريخ الانشاء </th>
                                                 <th>الإجراءات</th>
                                             </tr>
                                             </thead>
                                             <tbody>
 
-                                            @isset($categories)
-                                                @foreach($categories as $category)
+                                            @isset($products)
+                                                @foreach($products as $key=>$product)
                                                     <tr>
-                                                        <td>{{$category -> name}}</td>
-                                                        <td>{{$category -> mainParen->name}}</td>
-                                                        <td>{{$category -> slug}}</td>
-                                                        <td>{{$category -> getActive()}}</td>
-                                                        <td> <img style="width: 150px; height: 100px;" src=" "></td>
+                                                        <td> {{ $key+1 }}</td>
+                                                        <td>{{$product -> name}}</td>
+                                                        <td>{{$product -> price}}</td>
+                                                        <td>{{$product -> getActive()}}</td>
+                                                        <td>{{$product -> created_at}}</td>
 
-{{--                                                        <td>{{$category ->getActive() }}</td>--}}
                                                         <td>
                                                             <div class="btn-group" role="group"
                                                                  aria-label="Basic example">
-                                                                <a href="{{ route('admin.subcategories.edit',$category->id) }}"
+                                                                <a href="{{ route('admin.products.general.edit',$product->id) }}"
                                                                    class="btn btn-outline-primary btn-min-width box-shadow-3 mr-1 mb-1">تعديل</a>
 
 
-                                                                <a href="{{ route('admin.subcategories.delete',$category->id)}}"
+                                                                <a href="{{ route('admin.products.general.delete',$product->id)}}"
                                                                    class="btn btn-outline-danger btn-min-width box-shadow-3 mr-1 mb-1">حذف</a>
 
 {{--                                                                   <a href="{{ route('admin.main.categories.status',$category->id) }}"--}}
@@ -94,17 +95,32 @@
 
 
                                             </tbody>
-                                        </table>
-                                        <div class="justify-content-center d-flex">
 
+                                        </table>
+                                        <div class="justify-content-center d-flex pagination-separate pagination-round pagination-flat">
+                                            {!! $products -> links() !!}
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                 </section>
             </div>
         </div>
     </div>
+@endsection
+
+@section('js')
+
+<script>
+  $(document).ready(function () {
+
+ /* $('.dataTables_paginate').addClass('hidden');
+  $('.dtBasicExample_length').addClass('bs-select');/*/
+  //$('.pagination').addClass('');
+});
+</script>
+
 @endsection
