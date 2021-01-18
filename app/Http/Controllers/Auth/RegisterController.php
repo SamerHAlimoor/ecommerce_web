@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Services\VerificationServices;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -36,9 +38,11 @@ class RegisterController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public $sms_services;
+    public function __construct(VerificationServices $sms_service)
     {
         $this->middleware('guest');
+        $this->sms_services = $sms_service;
     }
 
     /**
@@ -64,10 +68,28 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'mobile' => $data['mobile'],
-            'password' => Hash::make($data['password']),
-        ]);
+        try {
+            DB::beginTransaction();
+            $verification = [];
+            $user = User::create([
+                'name' => $data['name'],
+                'mobile' => $data['mobile'],
+                'password' => Hash::make($data['password']),
+            ]);
+            // send OTP SMS code
+            // set/ generate new code
+            $verification['user_id'] = $user->id;
+            $verification_data = $this->sms_services->setVerificationCode($verification);
+            $message = $this->sms_services->getSMSVerifyMessageByAppName($verification_data->code);
+
+            //save this code in verifcation table
+            //done
+            //send code to user mobile by sms gateway   // note  there are no gateway credentails in config file
+            # app(VictoryLinkSms::class) -> sendSms($user -> mobile,$message);
+            DB::commit();
+            return $user;
+        } catch (\Exception $ex) {
+            DB::rollback();
+        }
     }
 }

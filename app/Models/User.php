@@ -27,4 +27,8 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function codes() {
+        return $this -> hasMany(User_verification::class,'user_id');
+    }
+
 }
