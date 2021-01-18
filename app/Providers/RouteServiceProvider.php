@@ -21,9 +21,8 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/home';
+    public const HOME = '/'; //home page for public user
     public const ADMIN = '/admin';
-
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -50,7 +49,6 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapSiteRoutes();
         $this->mapAdminRoutes();
-
 
         //
     }

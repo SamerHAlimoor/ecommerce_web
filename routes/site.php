@@ -29,30 +29,20 @@ return View::make('test');
  */
 Route::group([
     'prefix' => LaravelLocalization::setLocale(),
-    'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
+    'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'],
 ], function () {
-
-
-
-    Route::group(['namespace' => 'Site', 'middleware' => 'guest'], function () {
+    Auth::routes();
+    Route::get('/', 'HomeController@index')->name('home');
+    Route::group(['middleware' => 'guest'], function () {
         //guest  user
-        route::get('/','HomeController@home') -> name('home') -> middleware('VerifiedUser');
-        route::get('category/{slug}','CategoryController@productsBySlug') ->name('category');
 
     });
 
-
-    Route::group(['namespace' => 'Site', 'middleware' => ['auth','VerifiedUser']], function () {
-                    // must be authenticated user and verified
-        Route::get('profile',function(){
+    Route::group(['middleware' => ['auth']], function () {
+        // must be authenticated user and verified
+        Route::get('profile', function () {
             return 'You Are Authenticated ';
         });
-    });
-
-    Route::group(['namespace' => 'Site', 'middleware' => 'auth'], function () {
-        // must be authenticated user
-        Route::post('verify-user/', 'VerificationCodeController@verify') -> name('verify-user');
-        Route::get('verify','VerificationCodeController@getVerifyPage') -> name('get.verification.form');
     });
 
 });
