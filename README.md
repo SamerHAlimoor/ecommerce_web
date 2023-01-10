@@ -46,7 +46,7 @@
 </p>
 ## Roles
 <p align="center">
-    <img src="https://github.com/SamerHAlimoor/ecommerce_web/blob/master/admin-008.PNG" width="100%" alt="Roles Page"></a></p>
+    <img src="https://github.com/SamerHAlimoor/ecommerce_web/blob/master/admin-008.PNG" width="100%" alt="Roles Page"></a>
 </p>
 ## Profile
 <p align="center">
