@@ -95,7 +95,7 @@
 </p>
 
 
-## About Almadina Store
+## About Ecommerce 
 
 This application is designed to fit mid-companies. Also, the system contains of more than many sections
 
