@@ -78,20 +78,20 @@
 
 ## Wishlist User
 <p align="center">
-    <img src="https://github.com/SamerHAlimoor/ecommerce_web/blob/master/wishlist.jpg" width="100%" alt="Roles Page"></a></p>
+    <img src="https://github.com/SamerHAlimoor/ecommerce_web/blob/master/wishlist.PNG" width="100%" alt="Roles Page"></a>
     
-        <img src="https://github.com/SamerHAlimoor/ecommerce_web/blob/master/wishlist2.jpg" width="100%" alt="Roles Page"></a></p>
+        <img src="https://github.com/SamerHAlimoor/ecommerce_web/blob/master/wishlist2.PNG" width="100%" alt="Roles Page"></a>
 
 </p>
 
 ## MyCart User
 <p align="center">
-    <img src="https://github.com/SamerHAlimoor/ecommerce_web/blob/master/maycart.jpg" width="100%" alt="Roles Page"></a></p>
+    <img src="https://github.com/SamerHAlimoor/ecommerce_web/blob/master/maycart.PNG" width="100%" alt="Roles Page"></a></p>
 </p>
 
 ## Profile User
 <p align="center">
-    <img src="https://github.com/SamerHAlimoor/ecommerce_web/blob/master/profile.jpg" width="100%" alt="Roles Page"></a></p>
+    <img src="https://github.com/SamerHAlimoor/ecommerce_web/blob/master/profile.PNG" width="100%" alt="Roles Page"></a></p>
 </p>
 
 
